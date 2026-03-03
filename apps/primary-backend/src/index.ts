@@ -1,6 +1,8 @@
-import { Elysia } from "elysia";
-import { app as authApp } from "./modules/auth";
+import { app } from "./app";
+import { cors } from '@elysiajs/cors'
 
-const app = new Elysia().use(authApp).listen(3000);
 
-console.log(`Server running on ${app.server?.hostname}:${app.server?.port}`);
+app.use(cors({
+    origin: 'http://localhost:3001',
+    credentials: true,
+})).listen(3000);
